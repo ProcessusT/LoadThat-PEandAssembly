@@ -1,6 +1,6 @@
 # LoadThatPE
 
-![LoadThatPE](.assets/loadthatpe_demo.png)
+![LoadThatPE](.assets/yara_edition.jpg)
 
 > A simple PE Loader tool that loads a PE from memory, decrypt it, resolve its imports, relocate its sections, and redefine its entry point to execute seamlessly from memory.
 
@@ -60,9 +60,39 @@ This tool is strictly for **educational and research purposes**. Misuse of this 
 
 ### Clone the Repository
 
+- LoadThat-Assembly
 ```bash
 git clone https://github.com/ProcessusT/LoadThat-PEandAssembly.git
-cd LoadThatPE | cd LoadThatAssembly
+cd LoadThatAssembly
 python3 encrypt_pe.py <YOUR_PE.exe> <encrypted_pe.txt>
 ```
 Then, replace "unsigned char encryptedPE[]", "size_t encryptedPESize" and "const unsigned char xorKey" into the loader and compile !
+
+- LoadThat-PE
+```bash
+git clone https://github.com/ProcessusT/LoadThat-PEandAssembly.git
+cd LoadThatPE
+python3 encrypt_pe.py <YOUR_PE.exe> <encrypted_pe.txt>
+
+x86_64-w64-mingw32-g++ --static \
+    -O3 -flto -fwhole-program -ffast-math \
+    -s -Wl,--strip-all -fno-exceptions -fno-rtti \
+    -fno-ident -fexceptions \
+    -Wl,--build-id=sha1 \
+    -Wl,--image-base=0x10000000 \
+    -fomit-frame-pointer -momit-leaf-frame-pointer \
+    -finline-functions -finline-limit=1000 \
+    -fno-plt -mno-red-zone \
+    -static-libgcc -static-libstdc++ \
+    -Wl,--gc-sections -ffunction-sections -fdata-sections \
+    encrypted_pe.cpp -o yara_rule_edition.exe
+```
+
+### YARA Rule edition implementations 👼
+
+![Yara rule](.assets/yara_rule.png)
+
+- Multiple XOR encoding (random times)
+- Randomized Variables and functions names
+- Random sized chunks of PE
+- String "[I LOVE YARA RULE DETECTION]" added to ease detection
