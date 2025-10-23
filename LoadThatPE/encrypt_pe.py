@@ -315,16 +315,6 @@ def generate_encrypted_pe_chunks(input_file, output_file=None, chunk_size=256):
         CONTEXT {var_names["context"]} = {{}};
         {var_names["context"]}.ContextFlags = CONTEXT_FULL;
         if (!GetThreadContext({var_names["mainThreadHandle"]}, &{var_names["context"]})) {{
-            DWORD {var_names["rand_i7"]}  = GetLastError();
-            if ({var_names["rand_i7"]} == ERROR_ACCESS_DENIED) {{
-                exit(1);
-            }}
-            else if ({var_names["rand_i7"]} == ERROR_INVALID_HANDLE) {{
-                exit(1);
-            }}
-            else if ({var_names["rand_i7"]} == ERROR_NOT_SUPPORTED) {{
-                exit(1);
-            }}
             exit(1);
         }}
         DWORD64 {var_names["entryPoint"]} = {var_names["ntHeaders"]}->OptionalHeader.AddressOfEntryPoint + reinterpret_cast<DWORD64>({var_names["executableMemory"]});
