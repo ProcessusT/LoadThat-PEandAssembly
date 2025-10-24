@@ -80,3 +80,5 @@ x86_64-w64-mingw32-g++ --static \
 - Randomized Variables and functions names
 - Random sized chunks of PE
 - String "[I LOVE YARA RULE DETECTION]" added to ease detection
+
+![Virus Total](.assets/virustotal.png)
