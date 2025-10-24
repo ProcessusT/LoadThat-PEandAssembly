@@ -42,24 +42,6 @@ This tool is strictly for **educational and research purposes**. Misuse of this 
 
 ## 🛠️ Installation
 
-### Prerequisites (LoadThatPE)
-
-- `Windows` operating system (recommended for PE file handling).
-- `Visual Studio` or `GCC` for compiling the project.
-- `C/C++` compiler for maximum performance.
-
-### Prerequisites (LoadThatAssembly)
-
-- `Windows` operating system with .NET Framework 4.x installed (targets v4.0.30319).
-- `Visual Studio` (MSVC toolset) + Windows SDK.
-- Linking/Interop:
-- `mscoree.lib` (via #pragma comment(lib, "mscoree.lib")).
-- `mscorlib.tlb` import (via #import "mscorlib.tlb" …), requires the Framework/SDK to be present.
-- COM initialization (CoInitializeEx(COINIT_MULTITHREADED) is handled by the program).
-
-
-### Clone the Repository
-
 - LoadThat-Assembly
 ```bash
 git clone https://github.com/ProcessusT/LoadThat-PEandAssembly.git
@@ -88,7 +70,9 @@ x86_64-w64-mingw32-g++ --static \
     encrypted_pe.cpp -o yara_rule_edition.exe
 ```
 
-### YARA Rule edition implementations 👼
+---
+
+### 👼 YARA Rule edition implementations 👼
 
 ![Yara rule](.assets/yara_rule.png)
 
