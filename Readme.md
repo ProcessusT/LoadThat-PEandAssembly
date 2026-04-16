@@ -60,6 +60,8 @@ python3 encrypt_pe.py <YOUR_PE.exe>
 apt install mingw-w64
 pip3 install pefile requests
 ```
+![LoadThatPE](.assets/example.png)
+
 
 ### LoadThat-Assembly
 
