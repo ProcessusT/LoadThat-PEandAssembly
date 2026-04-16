@@ -1,6 +1,6 @@
 # LoadThatPE
 
-![LoadThatPE](.assets/virustotal-c2.png)
+![LoadThatPE](.assets/virustotal-v2.png)
 
 > A polymorphic in-memory PE loader. Encodes, obfuscates, and executes a PE 
 > entirely from memory — no file written to disk.
