@@ -1,20 +1,20 @@
 # LoadThatPE
 
-![LoadThatPE](.assets/virustotal-v2.png)
+![LoadThatPE](.assets/virustotal-v3.png)
 
 > A polymorphic in-memory PE loader. Encodes, obfuscates, and executes a PE 
 > entirely from memory — no file written to disk.
 
 ## 🚀 Features
 
-- **Word dictionary encoding** — each payload byte mapped to a unique English word from a 10,000-word corpus
+- **RC4 stream cipher encryption** — payload encrypted with a derived RC4 key, XOR-free, less pattern-recognizable than simple XOR loops
+- **DLL section stomping** — instead of anonymous `VirtualAlloc` regions (easily flagged), the encrypted payload is written directly into the `.text` section of a large legitimate DLL (`ieframe.dll` or equivalent), making the memory region appear backed by a real DLL on disk
 - **Polymorphic chunking** — payload split into randomly-sized chunks stored in shuffled order, unique binary on every generation
-- **In-memory execution** — decrypts, maps, resolves imports, relocates sections and transfers execution via thread context hijacking
+- **In-memory execution** — decrypts, maps, resolves imports, relocates sections and transfers execution via a new thread
 - **SHA-256 Proof-of-Work** — ~40–50s anti-sandbox delay before execution
-- **Stack strings** — sensitive API names (`LoadLibraryA`, `GetProcAddress`, `VirtualAlloc`...) built char-by-char at runtime
+- **Stack strings** — sensitive API names (`LoadLibraryA`, `GetProcAddress`, `VirtualProtect`...) built char-by-char at runtime
 - **Full identifier randomization** — all C++ function/variable names randomized at generation time
-- **PE metadata spoofing** — linker spoofed to MSVC VS2019, timestamp randomized, Rich header wiped, compiler strings zeroed
-- **Authenticode signature theft** — valid-looking signature metadata borrowed from PsExec64
+- **DLL candidate scanner** — `check_dll.py` scans `System32` to identify DLLs with a `.text` section large enough to stomp the target payload
 
 ---
 
