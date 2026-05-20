@@ -49,7 +49,7 @@ and ethical guidelines of your jurisdiction.
 
 ## 🛠️ Installation
 
-### LoadThat-PE (Word Dictionary Edition)
+### LoadThat-PE (Stomping Edition)
 
 ```bash
 git clone https://github.com/ProcessusT/LoadThat-PEandAssembly.git
